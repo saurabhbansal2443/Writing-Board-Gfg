@@ -15,7 +15,7 @@ canvas.width = 800;
 
 const ctx = canvas.getContext("2d");
 
-console.log(ctx);
+let currentTool = "pen";
 
 ctx.lineWidth = 5;
 ctx.lineCap = "round";
@@ -30,6 +30,8 @@ function startDraw(e) {
 
 function draw(e) {
   if (isdrawing == false) return;
+  ctx.strokeStyle = currentTool === "eraser" ? "#ffffff" : colorInput.value;
+  ctx.lineWidth = brushSizeInput.value;
   ctx.lineTo(e.offsetX, e.offsetY);
   ctx.stroke();
   ctx.beginPath();
@@ -38,6 +40,28 @@ function draw(e) {
 function stopDraw() {
   isdrawing = false;
 }
+
+penBtn.addEventListener("click", function () {
+  currentTool = "pen";
+  eraserBtn.classList.remove("activeBtn");
+  squareBtn.classList.remove("activeBtn");
+  penBtn.classList.add("activeBtn");
+});
+eraserBtn.addEventListener("click", function () {
+  currentTool = "eraser";
+  penBtn.classList.remove("activeBtn");
+  squareBtn.classList.remove("activeBtn");
+  eraserBtn.classList.add("activeBtn");
+});
+
+cleanUpBtn.addEventListener("click", function () {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+downloadImageBtn.addEventListener("click", function () {
+  const link = canvas.toDataURL("image/png");
+  console.log("link", link);
+});
 
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", draw);
