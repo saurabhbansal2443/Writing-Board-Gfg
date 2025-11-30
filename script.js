@@ -60,7 +60,12 @@ cleanUpBtn.addEventListener("click", function () {
 
 downloadImageBtn.addEventListener("click", function () {
   const link = canvas.toDataURL("image/png");
-  console.log("link", link);
+  const anchorTag = document.createElement("a");
+  anchorTag.href = link;
+  anchorTag.download = "Drawing.png";
+  document.body.appendChild(anchorTag);
+  anchorTag.click();
+  document.body.removeChild(anchorTag);
 });
 
 canvas.addEventListener("mousedown", startDraw);
