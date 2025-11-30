@@ -3,3 +3,52 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#heading {
+  text-align: center;
+}
+#tools {
+  margin-top: 10px;
+  width: 90vw;
+  background-color: lightskyblue;
+  display: flex;
+  height: 12vh;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 16px;
+}
+.colorInput {
+  width: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brushSizeInput {
+  width: 18%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #cbf3bb;
+}
+#canvas {
+  margin-top: 10px;
+  border: 5px solid #cbf3bb;
+  background-color: #ffffff;
+}
